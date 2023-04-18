@@ -4,10 +4,13 @@ import App from "./App";
 import "./index.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import IndexPage from "./pages";
-import ProjectsManagementPage from "./pages/management";
+import ProjectsManagementPage from "./pages/projects-management";
 import ProjectsPage from "./pages/projects";
 import ProjectAddPage from "./pages/projects/add";
 import LoginPage from "./pages/login";
+import ProjectManagementPage from "./pages/projects-management/[projectId]";
+import ProjectEditPage from "./pages/projects-management/[projectId]/edit";
+import ProjectPage from "./pages/projects/[projectId]";
 
 const router = createBrowserRouter([
   {
@@ -23,8 +26,12 @@ const router = createBrowserRouter([
     element: <ProjectsManagementPage />,
   },
   {
-    path: "/projects-management/editing/:projectId",
-    element: <ProjectsManagementPage />,
+    path: "/projects-management/:projectId",
+    element: <ProjectManagementPage />,
+  },
+  {
+    path: "/projects-management/:projectId/editing",
+    element: <ProjectEditPage />,
   },
   {
     path: "/projects",
@@ -32,7 +39,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/projects/:projectId",
-    element: <ProjectsPage />,
+    element: <ProjectPage />,
   },
   {
     path: "/projects/add",
