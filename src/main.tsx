@@ -7,6 +7,7 @@ import IndexPage from "./pages";
 import ProjectsManagementPage from "./pages/management";
 import ProjectsPage from "./pages/projects";
 import ProjectAddPage from "./pages/projects/add";
+import LoginPage from "./pages/login";
 
 const router = createBrowserRouter([
   {
@@ -14,11 +15,23 @@ const router = createBrowserRouter([
     element: <IndexPage />,
   },
   {
-    path: "/management",
+    path: "/login",
+    element: <LoginPage />,
+  },
+  {
+    path: "/projects-management",
+    element: <ProjectsManagementPage />,
+  },
+  {
+    path: "/projects-management/editing/:projectId",
     element: <ProjectsManagementPage />,
   },
   {
     path: "/projects",
+    element: <ProjectsPage />,
+  },
+  {
+    path: "/projects/:projectId",
     element: <ProjectsPage />,
   },
   {
