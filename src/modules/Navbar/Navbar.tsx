@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import styles from "./Navbar.module.css";
 import { Link } from "react-router-dom";
+import { AuthStoreContext } from "../../main";
+import { observer } from "mobx-react";
 
-interface NavbarProps {
-  isAuthenticated: boolean;
-}
+const Navbar = () => {
+  const globalStore = useContext(AuthStoreContext);
 
-export default function Navbar({ isAuthenticated = true }: NavbarProps) {
+  const isAuthenticated = globalStore.isAuth
+
   const [isOpened, setIsOpened] = useState<boolean>(false);
   const handleToggleIsOpened = () => {
     setIsOpened((prev) => !prev);
@@ -16,9 +18,7 @@ export default function Navbar({ isAuthenticated = true }: NavbarProps) {
     <nav className={styles.nav}>
       <div className={styles.wrapper}>
         <div
-          className={`${styles["burger-menu"]} ${
-            isOpened ? styles.active : ""
-          }`}
+          className={`${styles["burger-menu"]} ${isOpened ? styles.active : ""}`}
           onClick={handleToggleIsOpened}
         >
           <div className={styles["burger-menu__middle-bun"]}></div>
@@ -83,9 +83,7 @@ export default function Navbar({ isAuthenticated = true }: NavbarProps) {
             </svg>
           </div>
         </Link>
-        <ul
-          className={`${styles["nav-links"]} ${isOpened ? styles.opened : ""}`}
-        >
+        <ul className={`${styles["nav-links"]} ${isOpened ? styles.opened : ""}`}>
           <li className={styles["nav-link"]}>
             <Link to={"/"}>Home</Link>
           </li>
@@ -101,4 +99,6 @@ export default function Navbar({ isAuthenticated = true }: NavbarProps) {
       </div>
     </nav>
   );
-}
+};
+
+export default observer(Navbar);

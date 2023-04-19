@@ -1,0 +1,27 @@
+@import './../../../styles/colors/colors';
+
+.button {
+    padding: 1rem;
+    cursor: pointer;
+    border: none;
+    outline: none;
+
+    background-color: $dark;
+    color: $bright;
+
+    transition: all 0.2s ease-out;
+
+    &.bright {
+        background-color: $bright;
+        color: $dark;
+
+        &:hover {
+            color: $bright;
+        }
+    }
+
+    &:hover {
+        background-color: $cta;
+    }
+
+}

@@ -1,0 +1,15 @@
+.input-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    label {
+        margin-left: 0.5rem;    
+    }
+
+    input {
+        padding: 0.5rem;
+    }
+}

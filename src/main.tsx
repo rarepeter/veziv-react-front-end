@@ -1,7 +1,7 @@
-import React from "react";
+import React, { createContext } from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
-import './styles/global/global.css'
+import "./styles/global/global.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import IndexPage from "./pages";
 import ProjectsManagementPage from "./pages/projects-management";
@@ -11,6 +11,10 @@ import LoginPage from "./pages/login";
 import ProjectManagementPage from "./pages/projects-management/[projectId]";
 import ProjectEditPage from "./pages/projects-management/[projectId]/edit";
 import ProjectPage from "./pages/projects/[projectId]";
+import { Provider } from "mobx-react";
+import authStore from "./store/store";
+
+export const AuthStoreContext = createContext(authStore)
 
 const router = createBrowserRouter([
   {
@@ -49,6 +53,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Provider authStore={authStore}>
+      <RouterProvider router={router} />
+    </Provider>
   </React.StrictMode>
 );

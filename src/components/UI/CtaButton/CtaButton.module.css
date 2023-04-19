@@ -1,0 +1,19 @@
+.button {
+  padding: 1rem;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background-color: #252525;
+  color: #f6f6f6;
+  transition: all 0.2s ease-out;
+}
+.button.bright {
+  background-color: #f6f6f6;
+  color: #252525;
+}
+.button.bright:hover {
+  color: #f6f6f6;
+}
+.button:hover {
+  background-color: #1033ff;
+}/*# sourceMappingURL=CtaButton.module.css.map */
