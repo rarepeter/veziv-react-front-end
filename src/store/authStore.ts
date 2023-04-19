@@ -8,6 +8,10 @@ class AuthStore {
 
   constructor() {
     makeAutoObservable(this);
+    this.accessToken = localStorage.getItem("authToken");
+    if (localStorage.getItem("authToken")) {
+      this.isAuth = true;
+    }
   }
 
   setAccessToken(accessToken: string) {

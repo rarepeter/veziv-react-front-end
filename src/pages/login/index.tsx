@@ -13,7 +13,7 @@ export default function LoginPage() {
 
   return (
     <PageLayout>
-      <div className={styles.wrapper}>
+      <div className={styles["login-form-wrapper"]}>
         <LoginForm initialCredentials={initialCredentials} />
       </div>
     </PageLayout>
