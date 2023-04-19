@@ -1,7 +1,5 @@
-import React from 'react'
+import PageLayout from "../layouts/PageLayout";
 
 export default function IndexPage() {
-  return (
-    <div>Working!!!</div>
-  )
+  return <PageLayout>Working!</PageLayout>;
 }

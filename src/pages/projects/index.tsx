@@ -1,7 +1,9 @@
-import React from 'react'
+import PageLayout from '../../layouts/PageLayout'
 
 export default function ProjectsPage() {
   return (
-    <div>ProjectsPage</div>
+    <PageLayout>
+      Working!
+    </PageLayout>
   )
 }

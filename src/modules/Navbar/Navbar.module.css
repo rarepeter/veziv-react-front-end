@@ -1,0 +1,111 @@
+.nav {
+  width: 100%;
+}
+.nav .wrapper {
+  width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav .wrapper .burger-menu {
+  display: none;
+  height: 2rem;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+}
+.nav .wrapper .burger-menu__middle-bun {
+  width: 1.5rem;
+  height: 2px;
+  background-color: #252525;
+  position: relative;
+  transition: all 0.3s ease-out;
+}
+.nav .wrapper .burger-menu__middle-bun::after, .nav .wrapper .burger-menu__middle-bun::before {
+  content: "";
+  position: absolute;
+  height: inherit;
+  width: inherit;
+  background-color: inherit;
+  transition: inherit;
+}
+.nav .wrapper .burger-menu__middle-bun::after {
+  transform: translateY(0.5rem);
+}
+.nav .wrapper .burger-menu__middle-bun::before {
+  transform: translateY(-0.5rem);
+}
+.nav .wrapper .burger-menu.active {
+  position: absolute;
+  z-index: 100;
+}
+.nav .wrapper .burger-menu.active .burger-menu__middle-bun {
+  transform: rotate(135deg);
+}
+.nav .wrapper .burger-menu.active .burger-menu__middle-bun::after {
+  transform: none;
+}
+.nav .wrapper .burger-menu.active .burger-menu__middle-bun::before {
+  transform: translateY(0) rotate(90deg);
+}
+.nav .wrapper .nav-logo {
+  padding: 1rem 0;
+}
+.nav .wrapper .nav-logo svg {
+  height: 3rem;
+}
+.nav .wrapper .nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease-out;
+}
+.nav .wrapper .nav-links .nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.nav .wrapper .nav-links .nav-link a {
+  width: 100%;
+  padding: 1.5rem;
+}
+.nav .wrapper .nav-links .nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 1px;
+  background-color: #252525;
+  transition: all 0.2s ease-out;
+}
+.nav .wrapper .nav-links .nav-link:hover::after {
+  width: 100%;
+}
+
+@media screen and (max-width: 1270px) {
+  .nav .wrapper {
+    width: 100%;
+    padding: 0 2rem;
+  }
+}
+@media screen and (max-width: 770px) {
+  .nav .wrapper .burger-menu {
+    display: flex;
+  }
+  .nav .wrapper .nav-links {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #f6f6f6;
+    transform: translateX(-100%);
+    flex-direction: column;
+    min-height: 100vh;
+    min-width: 100vw;
+  }
+  .nav .wrapper .nav-links.opened {
+    transform: none;
+  }
+}/*# sourceMappingURL=Navbar.module.css.map */

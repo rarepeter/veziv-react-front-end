@@ -1,0 +1,152 @@
+@import '../../styles/colors/colors';
+
+.nav {
+    width: 100%;
+
+    .wrapper {
+        width: 1200px;
+        margin: 0 auto;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .burger-menu {
+            display: none;
+            height: 2rem;
+            cursor: pointer;
+
+            align-items: center;
+            justify-content: center;
+
+            &__middle-bun {
+                width: 1.5rem;
+                height: 2px;
+                background-color: $dark;
+                position: relative;
+
+                transition: all 0.3s ease-out;
+
+                &::after,
+                &::before {
+                    content: '';
+                    position: absolute;
+                    height: inherit;
+                    width: inherit;
+                    background-color: inherit;
+                    transition: inherit;
+                }
+
+                &::after {
+                    transform: translateY(0.5rem);
+                }
+
+                &::before {
+                    transform: translateY(-0.5rem);
+                }
+            }
+
+            &.active {
+                position: absolute;
+                z-index: 100;
+
+                .burger-menu__middle-bun {
+                    transform: rotate(135deg);
+
+                    &::after {
+                        transform: none;
+                    }
+
+                    &::before {
+                        transform: translateY(0) rotate(90deg);
+                    }
+                }
+            }
+
+        }
+
+        .nav-logo {
+            padding: 1rem 0;
+
+            svg {
+                height: 3rem;
+            }
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            transition: all 0.2s ease-out;
+
+            .nav-link {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                position: relative;
+
+                a {
+                    width: 100%;
+                    padding: 1.5rem;
+                }
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    bottom: 0;
+                    width: 0;
+                    height: 1px;
+                    background-color: $dark;
+                    transition: all 0.2s ease-out;
+                }
+
+                &:hover {
+                    &::after {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1270px) {
+    .nav {
+        .wrapper {
+            width: 100%;
+            padding: 0 2rem;
+
+        }
+    }
+}
+
+@media screen and (max-width: 770px) {
+    .nav {
+        .wrapper {
+            .burger-menu {
+                display: flex;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 0;
+                left: 0;
+                background-color: $bright;
+                transform: translateX(-100%);
+
+                flex-direction: column;
+
+                min-height: 100vh;
+                min-width: 100vw;
+
+                &.opened {
+                    transform: none;
+                }
+            }
+
+        }
+    }
+}
