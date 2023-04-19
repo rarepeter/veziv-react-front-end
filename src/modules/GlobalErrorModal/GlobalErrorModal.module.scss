@@ -1,0 +1,44 @@
+@import '../../styles/colors/colors';
+
+@keyframes appear {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.screen-cover {
+    animation: appear 0.4s ease-out;
+    min-height: 100vh;
+    min-width: 100vw;
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    background-color: rgba($color: #000000, $alpha: 0.5);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .modal-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 1rem;
+
+        max-width: 320px;
+
+        font-size: 1.25rem;
+
+        padding: 1.5rem;
+        background-color: $bright;
+
+        div {
+            font-size: inherit;
+        }
+    }
+}

@@ -16,12 +16,12 @@ class AuthService {
       return await response.json();
     }
 
-    const responseData = await response.json();
-    const returnedData = {
+    const responseBody = await response.json();
+
+    return {
       statusCode: response.status,
-      ...responseData,
+      ...responseBody,
     };
-    return returnedData;
   }
 
   static async logOut() {

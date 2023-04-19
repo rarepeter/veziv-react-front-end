@@ -12,9 +12,11 @@ import ProjectManagementPage from "./pages/projects-management/[projectId]";
 import ProjectEditPage from "./pages/projects-management/[projectId]/edit";
 import ProjectPage from "./pages/projects/[projectId]";
 import { Provider } from "mobx-react";
-import authStore from "./store/store";
+import authStore from "./store/authStore";
+import errorModalStore from "./store/errorModalStore";
 
-export const AuthStoreContext = createContext(authStore)
+export const AuthStoreContext = createContext(authStore);
+export const ErrorModalStoreContext = createContext(errorModalStore);
 
 const router = createBrowserRouter([
   {
@@ -53,7 +55,7 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <Provider authStore={authStore}>
+    <Provider authStore={authStore} errorModalStore={errorModalStore}>
       <RouterProvider router={router} />
     </Provider>
   </React.StrictMode>

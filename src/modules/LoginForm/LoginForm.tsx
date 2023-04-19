@@ -5,7 +5,7 @@ import { FormEvent, useContext, useEffect } from "react";
 import AuthService from "../../services/AuthService";
 import { AuthCredentials } from "../../interfaces";
 import { useNavigate } from "react-router-dom";
-import { AuthStoreContext } from "../../main";
+import { AuthStoreContext, ErrorModalStoreContext } from "../../main";
 import CtaButton from "../../components/UI/CtaButton/CtaButton";
 
 interface ILoginForm {
@@ -13,14 +13,20 @@ interface ILoginForm {
 }
 
 export default function LoginForm({ initialCredentials }: ILoginForm) {
-  const globalStore = useContext(AuthStoreContext);
+  const globalAuthStore = useContext(AuthStoreContext);
+  const globalErrorModalStore = useContext(ErrorModalStoreContext);
   const [credentials, handleChangeEmail, handleChangePassword] = useCredentials(initialCredentials);
 
   const handleLogin = async (e: FormEvent) => {
     e.preventDefault();
     const data = await AuthService.login(credentials);
-    localStorage.setItem("authToken", data.access_token);
-    globalStore.setIsAuth(true);
+    if (data.statusCode === 200) {
+      localStorage.setItem("authToken", data.access_token);
+      globalAuthStore.setIsAuth(true);
+    } else {
+      globalErrorModalStore.setModal(data.message, data.solution);
+    }
+    console.log(data.statusCode);
   };
 
   return (
