@@ -1,23 +1,21 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import styles from "./Footer.module.css";
 import { Link } from "react-router-dom";
 import { observer } from "mobx-react";
 import { AuthStoreContext } from "../../main";
-import AuthService from "../../services/AuthService";
 import CtaButton from "../../components/UI/CtaButton/CtaButton";
 
 const Footer = () => {
-  const globalStore = useContext(AuthStoreContext);
+  const globalAuthStore = useContext(AuthStoreContext);
 
   const handleSignOut = () => {
-    AuthService.logOut();
-    globalStore.setIsAuth(false);
+    globalAuthStore.logout();
   };
 
   return (
     <footer className={styles.footer}>
       <div className={styles.wrapper}>
-        {globalStore.isAuth ? (
+        {globalAuthStore.isAuth ? (
           <CtaButton onClick={handleSignOut} brightTheme={true}>
             Sign out
           </CtaButton>

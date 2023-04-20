@@ -1,0 +1,108 @@
+.management-project-container {
+  box-shadow: 5px 5px 10px black;
+}
+.management-project-container .portfolio-entry-link {
+  width: 100%;
+}
+.management-project-container .portfolio-entry-link .project-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 2rem;
+  width: 100%;
+}
+.management-project-container .portfolio-entry-link .project-container .image-container {
+  width: 250px;
+  height: 250px;
+  overflow: hidden;
+}
+.management-project-container .portfolio-entry-link .project-container .image-container img {
+  transition: all 0.3s;
+  min-width: 250px;
+  min-height: 250px;
+}
+.management-project-container .portfolio-entry-link .project-container:hover .image-container img {
+  transform: scale(1.1);
+}
+.management-project-container .portfolio-entry-link .project-container .project-info-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+}
+.management-project-container .portfolio-entry-link .project-container .project-info-container__title-label {
+  font-size: 1.5rem;
+  opacity: 0.7;
+}
+.management-project-container .portfolio-entry-link .project-container .project-info-container__title {
+  font-size: 2rem;
+}
+.management-project-container .portfolio-entry-link .project-container .client-info-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 2rem;
+  margin-left: 5rem;
+  position: relative;
+}
+.management-project-container .portfolio-entry-link .project-container .client-info-container::after {
+  content: "";
+  width: 1px;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: #252525;
+}
+.management-project-container .portfolio-entry-link .project-container .client-info-container__client-name-label {
+  opacity: 0.7;
+}
+.management-project-container .portfolio-entry-link .project-container .client-info-container__client-name {
+  font-size: 1.5rem;
+}
+.management-project-container .portfolio-entry-link .project-container .client-info-container__client-link-label {
+  opacity: 0.7;
+}
+.management-project-container .portfolio-entry-link .project-container .client-info-container__client-link {
+  font-size: 1.5rem;
+}
+.management-project-container .management-project-container__edit-btn {
+  background-color: rgba(16, 51, 255, 0.8);
+  color: #f6f6f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem;
+  font-size: 1.5rem;
+  transition: all 0.4s ease-out;
+}
+.management-project-container .management-project-container__edit-btn:hover {
+  background-color: #1033ff;
+}
+
+@media screen and (max-width: 700px) {
+  .management-project-container .portfolio-entry-link {
+    width: auto;
+  }
+  .management-project-container .portfolio-entry-link .project-container {
+    width: 300px;
+    flex-direction: column;
+  }
+  .management-project-container .portfolio-entry-link .project-container .image-container {
+    height: 300px;
+    width: 300px;
+    overflow: hidden;
+  }
+  .management-project-container .portfolio-entry-link .project-container .project-info-container {
+    align-items: center;
+  }
+  .management-project-container .portfolio-entry-link .project-container .client-info-container {
+    align-items: center;
+    padding: 0 0 3rem 0;
+    margin: 0;
+  }
+  .management-project-container .portfolio-entry-link .project-container .client-info-container::after {
+    display: none;
+  }
+}/*# sourceMappingURL=ManagementProjectContainer.module.css.map */

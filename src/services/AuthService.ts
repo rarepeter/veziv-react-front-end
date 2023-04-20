@@ -12,20 +12,17 @@ class AuthService {
         "Content-Type": "application/json",
       },
     });
-    if (response.status >= 400) {
-      return await response.json();
+
+    if (response.ok) {
+      const responseBody = await response.json();
+
+      return {
+        statusCode: response.status,
+        ...responseBody,
+      };
     }
 
-    const responseBody = await response.json();
-
-    return {
-      statusCode: response.status,
-      ...responseBody,
-    };
-  }
-
-  static async logOut() {
-    localStorage.removeItem("authToken");
+    return await response.json();
   }
 }
 

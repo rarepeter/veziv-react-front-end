@@ -1,0 +1,11 @@
+.add-new-project-link {
+  width: 100%;
+}
+.add-new-project-link .add-new-project-button {
+  width: 100%;
+  background-color: #1cab00;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  margin: 0 0 2rem 0;
+}/*# sourceMappingURL=ProjectsManagementPage.module.css.map */

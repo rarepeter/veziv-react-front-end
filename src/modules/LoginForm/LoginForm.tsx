@@ -1,10 +1,8 @@
 import styles from "./LoginForm.module.css";
 import useCredentials from "../../lib/hooks/credentials/useCredentials";
 import TextInput from "../../components/UI/TextInput/TextInput";
-import { FormEvent, useContext, useEffect } from "react";
-import AuthService from "../../services/AuthService";
+import { FormEvent, useContext } from "react";
 import { AuthCredentials } from "../../interfaces";
-import { useNavigate } from "react-router-dom";
 import { AuthStoreContext, ErrorModalStoreContext } from "../../main";
 import CtaButton from "../../components/UI/CtaButton/CtaButton";
 
@@ -18,15 +16,12 @@ export default function LoginForm({ initialCredentials }: ILoginForm) {
   const [credentials, handleChangeEmail, handleChangePassword] = useCredentials(initialCredentials);
 
   const handleLogin = async (e: FormEvent) => {
-    e.preventDefault();
-    const data = await AuthService.login(credentials);
-    if (data.statusCode === 200) {
-      localStorage.setItem("authToken", data.access_token);
-      globalAuthStore.setIsAuth(true);
-    } else {
-      globalErrorModalStore.setModal(data.message, data.solution);
+    try {
+      e.preventDefault();
+      await globalAuthStore.login(credentials);
+    } catch (err: any) {
+      globalErrorModalStore.setModal(err.message, err.solution);
     }
-    console.log(data.statusCode);
   };
 
   return (
