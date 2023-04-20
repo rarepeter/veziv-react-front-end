@@ -1,18 +1,9 @@
-interface IPortfolioEntry {
-  id: string;
-  title: string;
-  description: string;
-  clientName: string;
-  clientLink: string;
-  clientReview: string;
-  coverImageUrl: string;
-  isPubliclyVisible?: boolean;
-}
+import { IPortfolioEntry } from "../../../interfaces/portfolioEntry";
 
 interface PublicPortfolioEntriesHookState {
   loading: boolean;
-  projects: IPortfolioEntry[];
-  error: string;
+  projects: IPortfolioEntry[] | undefined;
+  error: string | undefined;
 }
 
 export const INITIAL_STATE: PublicPortfolioEntriesHookState = {
@@ -23,7 +14,7 @@ export const INITIAL_STATE: PublicPortfolioEntriesHookState = {
 
 interface Action {
   type: ACTION_TYPES;
-  payload?: {};
+  payload?: IPortfolioEntry[];
   err?: string;
 }
 
@@ -33,7 +24,10 @@ export enum ACTION_TYPES {
   FETCH_ERROR = "FETCH_ERROR",
 }
 
-export const projectsReducer = (state: any, action: Action) => {
+export const projectsReducer = (
+  state: PublicPortfolioEntriesHookState,
+  action: Action
+): typeof INITIAL_STATE => {
   switch (action.type) {
     case ACTION_TYPES.FETCH_START:
       return {

@@ -5,7 +5,7 @@ import { PUBLIC_PROJECTS_URL } from "../../../data/urls";
 export default function usePublicPortfolioEntries() {
   const [state, dispatch] = useReducer(projectsReducer, INITIAL_STATE);
 
-  console.log(state)
+  console.log(state);
 
   useEffect(() => {
     (async () => {
@@ -25,5 +25,5 @@ export default function usePublicPortfolioEntries() {
     })();
   }, []);
 
-  return [state];
+  return [state.error, state.loading, state.projects] as const;
 }

@@ -1,1 +1,8 @@
-/*# sourceMappingURL=PublicProjectsList.module.css.map */
+.project-containers-wrapper {
+  max-width: 1200px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}/*# sourceMappingURL=PublicProjectsList.module.css.map */

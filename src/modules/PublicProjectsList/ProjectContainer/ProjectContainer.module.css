@@ -1,0 +1,65 @@
+.portfolio-entry-link {
+  width: 100%;
+}
+.portfolio-entry-link .project-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+  max-height: 200px;
+  width: 100%;
+  box-shadow: 5px 5px 10px black;
+  cursor: pointer;
+}
+.portfolio-entry-link .project-container .image-container {
+  height: 200px;
+  width: 200px;
+  overflow: hidden;
+}
+.portfolio-entry-link .project-container:hover .image-container img {
+  transition: all 0.3s ease-out;
+  transform: scale(1.1);
+}
+.portfolio-entry-link .project-container .project-info-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+}
+.portfolio-entry-link .project-container .project-info-container__title-label {
+  font-size: 1.5rem;
+  opacity: 0.7;
+}
+.portfolio-entry-link .project-container .project-info-container__title {
+  font-size: 2rem;
+}
+.portfolio-entry-link .project-container .client-info-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  padding-left: 1rem;
+  margin-left: 5rem;
+  position: relative;
+}
+.portfolio-entry-link .project-container .client-info-container::after {
+  content: "";
+  width: 1px;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: #252525;
+}
+.portfolio-entry-link .project-container .client-info-container__client-name-label {
+  opacity: 0.7;
+}
+.portfolio-entry-link .project-container .client-info-container__client-name {
+  font-size: 1.5rem;
+}
+.portfolio-entry-link .project-container .client-info-container__client-link-label {
+  opacity: 0.7;
+}
+.portfolio-entry-link .project-container .client-info-container__client-link {
+  font-size: 1.5rem;
+}/*# sourceMappingURL=ProjectContainer.module.css.map */
