@@ -16,7 +16,6 @@
   overflow: hidden;
 }
 .portfolio-entry-link .project-container .image-container img {
-  transform: scale(1);
   transition: all 0.3s;
   min-width: 250px;
   min-height: 250px;
