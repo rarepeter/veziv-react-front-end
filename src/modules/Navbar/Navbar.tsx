@@ -26,8 +26,6 @@ const Navbar = () => {
         <Link to={"/"}>
           <div className={styles["nav-logo"]}>
             <svg
-              // width="144"
-              // height="61"
               viewBox="0 0 144 61"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -86,9 +84,6 @@ const Navbar = () => {
         <ul className={`${styles["nav-links"]} ${isOpened ? styles.opened : ""}`}>
           <li className={styles["nav-link"]}>
             <Link to={"/"}>Home</Link>
-          </li>
-          <li className={styles["nav-link"]}>
-            <Link to={"/projects"}>All projects</Link>
           </li>
           {isAuthenticated ? (
             <li className={styles["nav-link"]}>
