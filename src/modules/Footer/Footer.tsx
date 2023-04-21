@@ -21,7 +21,7 @@ const Footer = () => {
           </CtaButton>
         ) : (
           <div className={styles["login-page-link"]}>
-            <Link to={"/login?email=peter@gmail.com&password=123"}>Proceed to login page.</Link>
+            <Link to={"/login?email=veziv@test.com&password=123"}>Proceed to login page.</Link>
           </div>
         )}
         <div className={styles["project-description"]}>

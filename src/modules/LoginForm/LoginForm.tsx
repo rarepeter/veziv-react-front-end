@@ -29,13 +29,13 @@ export default function LoginForm({ initialCredentials }: ILoginForm) {
       <TextInput
         labelText="Email:"
         name="email"
-        onValueChange={handleChangeEmail}
+        onChange={(e) => handleChangeEmail(e.target.value)}
         value={credentials.email}
       />
       <TextInput
         labelText="Password:"
         name="password"
-        onValueChange={handleChangePassword}
+        onChange={(e) => handleChangePassword(e.target.value)}
         value={credentials.password}
       />
       <CtaButton type="submit">Login</CtaButton>
