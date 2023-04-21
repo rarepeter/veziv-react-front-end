@@ -1,5 +1,5 @@
 import { observer } from "mobx-react-lite";
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { ErrorModalStoreContext } from "../../main";
 import styles from "./GlobalErrorModal.module.css";
 import CtaButton from "../../components/UI/CtaButton/CtaButton";

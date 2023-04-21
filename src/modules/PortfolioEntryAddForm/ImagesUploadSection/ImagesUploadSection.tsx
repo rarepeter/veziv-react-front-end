@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./ImagesUploadSection.module.css";
 import { v4 as uuidv4 } from "uuid";
 import { IImageObject } from "../../../interfaces";
@@ -6,8 +6,6 @@ import FormPortfolioEntryImage from "../FormPortfolioEntryImage/FormPortfolioEnt
 
 export default function ImagesUploadSection({ setImagesInformation }: any) {
   const [imageObjectsArray, setImageObjectsArray] = useState<any>([]);
-
-  console.log(imageObjectsArray);
 
   useEffect(() => {
     setImagesInformation(imageObjectsArray);

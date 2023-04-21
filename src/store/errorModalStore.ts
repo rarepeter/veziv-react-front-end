@@ -1,6 +1,6 @@
 import { makeAutoObservable } from "mobx";
 
-class ErrorModal {
+class ErrorModalStore {
   isVisible: boolean = false;
   text: string = "Error!";
   solution: string = "Try again later.";
@@ -15,7 +15,7 @@ class ErrorModal {
     if (solution) {
       this.solution = solution;
     } else {
-      this.solution = "Try again later."
+      this.solution = "Try again later.";
     }
   }
 
@@ -24,4 +24,6 @@ class ErrorModal {
   }
 }
 
-export default new ErrorModal();
+const errorModalStore = new ErrorModalStore();
+
+export { errorModalStore };

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styles from "./CoverImageUploadSection.module.css";
 
 interface ICoverImageUploadSectionProps {
@@ -12,7 +12,6 @@ export default function CoverImageUploadSection({
   coverImageFile,
   coverImageUrl,
 }: ICoverImageUploadSectionProps) {
-  console.log(coverImageUrl);
   return (
     <div className={styles["cover-image-upload-wrapper"]}>
       <label className={styles["cover-image-upload-btn"]} htmlFor="cover-image-file">

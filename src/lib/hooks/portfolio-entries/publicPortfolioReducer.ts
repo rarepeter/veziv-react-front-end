@@ -1,3 +1,5 @@
+// DEPRECATED
+
 import { IPortfolioEntry } from "../../../interfaces/portfolioEntry";
 
 interface PublicPortfolioEntriesHookState {

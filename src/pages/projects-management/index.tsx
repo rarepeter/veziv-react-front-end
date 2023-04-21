@@ -44,4 +44,3 @@ const ProjectsManagementPage = () => {
 };
 
 export default observer(ProjectsManagementPage);
-// export default observer(ProjectsManagementPage);

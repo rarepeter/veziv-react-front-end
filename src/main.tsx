@@ -1,6 +1,5 @@
 import React, { createContext } from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App";
 import "./styles/global/global.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import IndexPage from "./pages";
@@ -11,8 +10,7 @@ import ProjectManagementPage from "./pages/projects-management/[projectId]";
 import ProjectEditPage from "./pages/projects-management/[projectId]/edit";
 import ProjectPage from "./pages/projects/[projectId]";
 import { Provider } from "mobx-react";
-import authStore from "./store/authStore";
-import errorModalStore from "./store/errorModalStore";
+import { authStore, errorModalStore } from "./store/index";
 
 export const AuthStoreContext = createContext(authStore);
 export const ErrorModalStoreContext = createContext(errorModalStore);

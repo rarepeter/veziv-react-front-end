@@ -1,5 +1,4 @@
-import { useEffect, useReducer, useState } from "react";
-import { ACTION_TYPES, INITIAL_STATE, projectsReducer } from "./publicPortfolioReducer";
+import { useEffect, useState } from "react";
 import { PUBLIC_PROJECTS_URL } from "../../../data/urls";
 import { IPortfolioEntry } from "../../../interfaces";
 

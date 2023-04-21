@@ -1,4 +1,3 @@
-import React from "react";
 import ProjectContainer from "./ManagementProjectContainer/ManagementProjectContainer";
 import { IPortfolioEntry } from "../../interfaces/portfolioEntry";
 import styles from "./ManagementProjectsList.module.css";
