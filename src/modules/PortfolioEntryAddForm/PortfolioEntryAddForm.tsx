@@ -19,7 +19,6 @@ export default function PortfolioEntryAddForm() {
     isPubliclyVisible: false,
   });
 
-  console.log(newPortfolioEntryInfo.isPubliclyVisible);
   const [coverImageFile, setCoverImageFile] = useState<FileList | null>(null);
 
   const handleSubmit = async (e: FormEvent) => {
