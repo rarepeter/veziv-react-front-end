@@ -1,16 +1,13 @@
 import React, { useEffect, useState } from "react";
 import styles from "./ImagesUploadSection.module.css";
 import { v4 as uuidv4 } from "uuid";
-
-interface ICompositeObject {
-  id: string;
-  order: number;
-  file: File;
-  image: string;
-}
+import { IImageObject } from "../../../interfaces";
+import FormPortfolioEntryImage from "../FormPortfolioEntryImage/FormPortfolioEntryImage";
 
 export default function ImagesUploadSection({ setImagesInformation }: any) {
   const [imageObjectsArray, setImageObjectsArray] = useState<any>([]);
+
+  console.log(imageObjectsArray);
 
   useEffect(() => {
     setImagesInformation(imageObjectsArray);
@@ -20,12 +17,9 @@ export default function ImagesUploadSection({ setImagesInformation }: any) {
     if (files === null) return;
     const filesArray = Array.from(files);
 
-    const maxOrder = imageObjectsArray.reduce(
-      (max: number, compositeImageObject: ICompositeObject) => {
-        return compositeImageObject.order > max ? compositeImageObject.order : max;
-      },
-      0
-    );
+    const maxOrder = imageObjectsArray.reduce((max: number, compositeImageObject: IImageObject) => {
+      return compositeImageObject.order > max ? compositeImageObject.order : max;
+    }, 0);
 
     console.log(maxOrder);
 
@@ -43,14 +37,14 @@ export default function ImagesUploadSection({ setImagesInformation }: any) {
   };
 
   const handleRemoveImage = (imageId: string) => {
-    const { order } = imageObjectsArray.find((compositeImageObject: ICompositeObject) => {
+    const { order } = imageObjectsArray.find((compositeImageObject: IImageObject) => {
       return compositeImageObject.id === imageId;
     });
     const newImageObjectsArray = imageObjectsArray
-      .filter((compositeImageObject: ICompositeObject) => {
+      .filter((compositeImageObject: IImageObject) => {
         return compositeImageObject.id !== imageId;
       })
-      .map((compositeImageObject: ICompositeObject) => {
+      .map((compositeImageObject: IImageObject) => {
         if (compositeImageObject.order > order) {
           compositeImageObject.order -= 1;
           return compositeImageObject;
@@ -61,31 +55,34 @@ export default function ImagesUploadSection({ setImagesInformation }: any) {
     setImageObjectsArray(newImageObjectsArray);
   };
 
-  const sortedImageObjectsArray = imageObjectsArray.sort(
-    (a: ICompositeObject, b: ICompositeObject) => {
-      if (a.order < b.order) return 1;
-      return -1;
-    }
-  );
+  const sortedImageObjectsArray = imageObjectsArray.sort((a: IImageObject, b: IImageObject) => {
+    if (a.order > b.order) return 1;
+    return -1;
+  });
+
   return (
-    <>
-      <div>
-        <input
-          type="file"
-          multiple
-          accept="image/png, image/jpeg, image/webp"
-          onChange={(e) => handleAddFiles(e.target.files)}
-        />
+    <div className={styles["upload-images-wrapper"]}>
+      <label htmlFor="portfolio-entry-add-images" className={styles["upload-images-button"]}>
+        Add images
+      </label>
+      <input
+        id="portfolio-entry-add-images"
+        type="file"
+        multiple
+        accept="image/png, image/jpeg, image/webp"
+        onChange={(e) => handleAddFiles(e.target.files)}
+      />
+      <div className={styles["upload-images__images-list"]}>
+        {sortedImageObjectsArray.map((imageObject: IImageObject) => {
+          return (
+            <FormPortfolioEntryImage
+              key={imageObject.id}
+              imageObject={imageObject}
+              onImageDelete={handleRemoveImage}
+            />
+          );
+        })}
       </div>
-      {sortedImageObjectsArray.map((file: any) => {
-        return (
-          <React.Fragment key={file.id}>
-            <img src={file.image} alt="AAA" />
-            <div>{file.order + 1}</div>
-            <button onClick={() => handleRemoveImage(file.id)}>Remove image</button>
-          </React.Fragment>
-        );
-      })}
-    </>
+    </div>
   );
 }

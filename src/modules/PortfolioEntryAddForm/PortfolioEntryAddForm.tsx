@@ -1,20 +1,15 @@
 import React, { FormEvent, useState } from "react";
 import styles from "./PortfolioEntryAddForm.module.css";
 import ImagesUploadSection from "./ImagesUploadSection/ImagesUploadSection";
-import TextInput from "../../components/UI/TextInput/TextInput";
 import { fetchFormDataWithAuth, fetchWithAuth } from "../../lib/interceptors/fetchInterceptor";
 import { SERVER_URL } from "../../data/urls";
-
-interface ICompositeObject {
-  id: string;
-  order: number;
-  file: File;
-  image: string;
-}
+import TextFieldsSection from "./TextFieldsSection/TextFieldsSection";
+import CoverImageUploadSection from "./CoverImageUploadSection/CoverImageUploadSection";
+import { IImageObject, INewPortfolioEntryDto } from "../../interfaces";
 
 export default function PortfolioEntryAddForm() {
-  const [imagesInformation, setImagesInformation] = useState<ICompositeObject[]>([]);
-  const [newPortfolioEntryInfo, setNewPortfolioEntryInfo] = useState({
+  const [imagesInformation, setImagesInformation] = useState<IImageObject[]>([]);
+  const [newPortfolioEntryInfo, setNewPortfolioEntryInfo] = useState<INewPortfolioEntryDto>({
     title: "",
     description: "",
     clientLink: "",
@@ -23,6 +18,10 @@ export default function PortfolioEntryAddForm() {
     coverImageUrl: "",
     isPubliclyVisible: false,
   });
+
+  console.log(newPortfolioEntryInfo.isPubliclyVisible);
+  const [coverImageFile, setCoverImageFile] = useState<FileList | null>(null);
+
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     const response = await fetchWithAuth(`${SERVER_URL}/portfolio-entries`, {
@@ -46,63 +45,36 @@ export default function PortfolioEntryAddForm() {
           }
         );
       }
+
+      if (coverImageFile !== null && coverImageFile[0] !== undefined) {
+        const coverImageFd = new FormData();
+        coverImageFd.append("image", coverImageFile[0]);
+
+        const data = await fetchFormDataWithAuth(
+          `${SERVER_URL}/images/cover-image/${newPortfolioEntryId}`,
+          {
+            method: "POST",
+            body: coverImageFd,
+          }
+        );
+      }
     }
   };
 
   return (
     <>
-      <form onSubmit={(e) => handleSubmit(e)}>
-        <TextInput
-          labelText="Title:"
-          name="title"
-          onChange={(e) =>
-            setNewPortfolioEntryInfo((prev) => ({ ...prev, [e.target.name]: e.target.value }))
-          }
-          value={newPortfolioEntryInfo.title}
-        />
-        <TextInput
-          labelText="Description:"
-          name="description"
-          onChange={(e) =>
-            setNewPortfolioEntryInfo((prev) => ({ ...prev, [e.target.name]: e.target.value }))
-          }
-          value={newPortfolioEntryInfo.description}
-        />
-        <TextInput
-          labelText="Client name:"
-          name="clientName"
-          onChange={(e) =>
-            setNewPortfolioEntryInfo((prev) => ({ ...prev, [e.target.name]: e.target.value }))
-          }
-          value={newPortfolioEntryInfo.clientName}
-        />
-        <TextInput
-          labelText="Client link:"
-          name="clientLink"
-          onChange={(e) =>
-            setNewPortfolioEntryInfo((prev) => ({ ...prev, [e.target.name]: e.target.value }))
-          }
-          value={newPortfolioEntryInfo.clientLink}
-        />
-        <TextInput
-          labelText="Client review:"
-          name="clientReview"
-          onChange={(e) =>
-            setNewPortfolioEntryInfo((prev) => ({ ...prev, [e.target.name]: e.target.value }))
-          }
-          value={newPortfolioEntryInfo.clientReview}
-        />
-        <TextInput
-          labelText="Cover image URL:"
-          name="coverImageUrl"
-          onChange={(e) =>
-            setNewPortfolioEntryInfo((prev) => ({ ...prev, [e.target.name]: e.target.value }))
-          }
-          value={newPortfolioEntryInfo.coverImageUrl}
-        />
-        <button type="submit">Submit!</button>
-      </form>
+      <TextFieldsSection
+        newPortfolioEntryInfo={newPortfolioEntryInfo}
+        setNewPortfolioEntryInfo={setNewPortfolioEntryInfo}
+        onSubmit={(e: React.FormEvent) => handleSubmit(e)}
+        coverImageFile={coverImageFile}
+      />
       <ImagesUploadSection setImagesInformation={setImagesInformation} />
+      <CoverImageUploadSection
+        coverImageFile={coverImageFile}
+        coverImageUrl={newPortfolioEntryInfo.coverImageUrl}
+        setCoverImageFile={setCoverImageFile}
+      />
     </>
   );
 }

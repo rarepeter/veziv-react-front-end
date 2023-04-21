@@ -1,1 +1,24 @@
-/*# sourceMappingURL=ImagesUploadSection.module.css.map */
+.upload-images-wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 1.5rem 0;
+}
+.upload-images-wrapper .upload-images__images-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.upload-images-wrapper .upload-images-button {
+  width: 100%;
+  padding: 1rem;
+  background-color: #1cab00;
+  color: #f6f6f6;
+  cursor: pointer;
+}
+.upload-images-wrapper input {
+  display: none;
+}/*# sourceMappingURL=ImagesUploadSection.module.css.map */

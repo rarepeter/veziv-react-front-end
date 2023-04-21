@@ -1,0 +1,31 @@
+@keyframes rotating-animation {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.loading-page {
+  width: 100%;
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.loading-page .loading-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2rem;
+}
+.loading-page .loading-container .loading-circle .circle {
+  width: 200px;
+  height: 200px;
+  background-color: transparent;
+  border-radius: 50%;
+  border-top: 3px solid black;
+  border-bottom: 3px solid black;
+  animation: rotating-animation 1s 0s infinite;
+}/*# sourceMappingURL=PageLoadingState.module.css.map */

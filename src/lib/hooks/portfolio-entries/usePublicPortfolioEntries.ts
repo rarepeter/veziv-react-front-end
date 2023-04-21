@@ -1,29 +1,36 @@
-import { useEffect, useReducer } from "react";
+import { useEffect, useReducer, useState } from "react";
 import { ACTION_TYPES, INITIAL_STATE, projectsReducer } from "./publicPortfolioReducer";
 import { PUBLIC_PROJECTS_URL } from "../../../data/urls";
+import { IPortfolioEntry } from "../../../interfaces";
+
+interface IError {
+  message: string;
+  solution: string;
+}
+
+const defaultError = {
+  message: "",
+  solution: "",
+};
 
 export default function usePublicPortfolioEntries() {
-  const [state, dispatch] = useReducer(projectsReducer, INITIAL_STATE);
-
-  console.log(state);
+  const [error, setError] = useState<IError>(defaultError);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [portfolioEntries, setPortfolioEntries] = useState<IPortfolioEntry[]>([]);
 
   useEffect(() => {
     (async () => {
-      dispatch({ type: ACTION_TYPES.FETCH_START });
-      await fetch(PUBLIC_PROJECTS_URL)
-        .then((res) => res.json())
-        .then((resData) => {
-          if (resData.statusCode >= 400) {
-            dispatch({ type: ACTION_TYPES.FETCH_ERROR, err: resData.message });
-          } else {
-            dispatch({ type: ACTION_TYPES.FETCH_SUCCESS, payload: resData.portfolioEntries });
-          }
-        })
-        .catch((err) => {
-          dispatch({ type: ACTION_TYPES.FETCH_ERROR, err });
-        });
+      const response = await fetch(PUBLIC_PROJECTS_URL);
+      if (response.ok) {
+        const data = await response.json();
+        setPortfolioEntries(data.portfolioEntries);
+      } else {
+        const errorData = await response.json();
+        setError({ message: errorData.message, solution: errorData.solution });
+      }
+      setIsLoading(false);
     })();
   }, []);
 
-  return [state.error, state.loading, state.projects] as const;
+  return [error, isLoading, portfolioEntries] as const;
 }

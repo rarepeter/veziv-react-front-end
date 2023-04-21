@@ -1,0 +1,38 @@
+.image-container-wrapper {
+  margin: 1rem;
+  width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: #fff;
+}
+.image-container-wrapper .image-order-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.image-container-wrapper .image-container {
+  width: 100%;
+  border: 3px solid black;
+}
+.image-container-wrapper .image-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.image-container-wrapper .image-buttons .delete-button {
+  background-color: #ff0000;
+  color: white;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: all 0.3s ease-out;
+}
+.image-container-wrapper .image-buttons .delete-button:hover {
+  opacity: 1;
+}/*# sourceMappingURL=FormPortfolioEntryImage.module.css.map */

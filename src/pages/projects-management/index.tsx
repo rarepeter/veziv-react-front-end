@@ -6,6 +6,7 @@ import { observer } from "mobx-react";
 import styles from "../../styles/pages/projects-management/ProjectsManagementPage.module.css";
 import { Link } from "react-router-dom";
 import ManagementProjectsList from "../../modules/ManagementProjectsList/ManagementProjectsList";
+import PageLoadingState from "../../modules/PageLoadingState/PageLoadingState";
 
 const ProjectsManagementPage = () => {
   const [error, isLoading, portfolioEntries] = useAllPortfolioEntries();
@@ -23,7 +24,7 @@ const ProjectsManagementPage = () => {
   if (isLoading)
     return (
       <PageLayout>
-        <div>Loading...</div>
+        <PageLoadingState />
       </PageLayout>
     );
   if (error.message !== "" || !globalAuth.isAuth)
@@ -42,5 +43,5 @@ const ProjectsManagementPage = () => {
   );
 };
 
-export default observer(ProjectsManagementPage)
+export default observer(ProjectsManagementPage);
 // export default observer(ProjectsManagementPage);

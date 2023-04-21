@@ -9,4 +9,14 @@ interface IPortfolioEntry {
   isPubliclyVisible?: boolean;
 }
 
-export type { IPortfolioEntry };
+interface INewPortfolioEntryDto {
+  title: string;
+  description: string;
+  clientLink: string;
+  clientReview: string;
+  clientName: string;
+  coverImageUrl: string;
+  isPubliclyVisible: boolean;
+}
+
+export type { IPortfolioEntry, INewPortfolioEntryDto };

@@ -1,0 +1,22 @@
+@import '../../../styles/colors/colors';
+
+.form-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 2rem;
+
+    .public-switch-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        .public-visibility-switch-btn {
+            background-color: blue;
+        }
+    }
+}

@@ -1,0 +1,27 @@
+.cover-image-upload-wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+.cover-image-upload-wrapper input {
+  display: none;
+}
+.cover-image-upload-wrapper .cover-image-upload-btn {
+  width: 100%;
+  background-color: #1033ff;
+  opacity: 0.7;
+  cursor: pointer;
+  padding: 1rem;
+  color: #f6f6f6;
+  transition: all 0.4s ease-out;
+}
+.cover-image-upload-wrapper .cover-image-upload-btn:hover {
+  opacity: 0.9;
+}
+.cover-image-upload-wrapper .cover-image-display-container {
+  width: 300px;
+}/*# sourceMappingURL=CoverImageUploadSection.module.css.map */

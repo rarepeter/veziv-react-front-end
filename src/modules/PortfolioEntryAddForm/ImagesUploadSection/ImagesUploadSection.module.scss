@@ -1,0 +1,29 @@
+@import '../../../styles/colors/colors';
+
+.upload-images-wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 1.5rem 0;
+
+    .upload-images__images-list {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .upload-images-button {
+        width: 100%;
+        padding: 1rem;
+        background-color: $green-cta;
+        color: $bright;
+        cursor: pointer;
+    }
+
+    input {
+        display: none;
+    }
+}
