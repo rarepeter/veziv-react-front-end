@@ -6,8 +6,10 @@ import { SERVER_URL } from "../../data/urls";
 import TextFieldsSection from "./TextFieldsSection/TextFieldsSection";
 import CoverImageUploadSection from "./CoverImageUploadSection/CoverImageUploadSection";
 import { IImageObject, INewPortfolioEntryDto } from "../../interfaces";
+import { useNavigate } from "react-router-dom";
 
 export default function PortfolioEntryAddForm() {
+  const navigate = useNavigate();
   const [imagesInformation, setImagesInformation] = useState<IImageObject[]>([]);
   const [newPortfolioEntryInfo, setNewPortfolioEntryInfo] = useState<INewPortfolioEntryDto>({
     title: "",
@@ -57,6 +59,7 @@ export default function PortfolioEntryAddForm() {
           }
         );
       }
+      navigate("/projects-management");
     }
   };
 
